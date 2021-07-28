@@ -1,31 +1,33 @@
-const Owner = require("./Owner");
+const Users = require("./Users");
 const Property = require("./Property");
-const Tenant = require("./Tenant");
+const Contract = require("./Contract");
 
-//Owner has many properties
-Owner.hasMany(Property, {
-  foreignKey: "owner_id",
+//User has many properties
+Users.hasMany(Property, {
+  
    
 });
 
-//Tenant belongs to one property
-Tenant.belongsToMany(Property, {
-  foreignKey: "tenant_id",
+//Property belongs to one user
+Property.belongsToOne(Users, {
+  
   
 });
 
-//Property has many tenants
-Property.hasMany(Tenant, {
-  foreignKey: "property_id",
+//Contract belongs to one property
+Contract.belongsToOne(Property,{
+
+
+})
+
+//Property has one contract 
+Property.hasOne(Contract, {
+  
   
 });
 
-//Property belongs to owner
 
-Property.belongsTo(Owner, {
-  foreignKey: "Owner_id",
-  onDelete: "CASCADE",
 
-});
 
-module.exports = { Owner, Property, Tenant };
+
+module.exports = { Users, Property, Contract };

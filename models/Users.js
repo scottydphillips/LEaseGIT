@@ -2,32 +2,26 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
 // create our Traveller model
-class Property extends Model {}
+class Users extends Model {}
 
-Property.init({
+Users.init({
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
-  address: {
+  role: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  availability: {
-    type:DataTypes.BOOLEAN,
-    default:true
-  },
-  property_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: "",
-      key: "id",
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      len: [8],
     },
   },
-
-  
 });
 
-module.exports = Property;
+module.exports = Users;
