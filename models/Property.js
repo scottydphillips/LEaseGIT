@@ -17,7 +17,7 @@ Property.init({
   },
   availability: {
     type:DataTypes.BOOLEAN,
-    default:true
+    default:true,
   },
   property_id: {
     type: DataTypes.INTEGER,
@@ -26,8 +26,16 @@ Property.init({
       key: "id",
     },
   },
+},
+{
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'property',
+  } 
 
   
-});
+);
 
 module.exports = Property;
