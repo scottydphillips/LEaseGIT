@@ -1,21 +1,21 @@
 const sequelize = require("../config/connection");
-const { Owner, Property, Tenant } = require("../models");
+const { Users, Property, Contract } = require("../models");
 
-const ownerData = require("./ownerData");
+const userData = require("./userData");
 const propertyData = require("./propertyData");
-const tenantData = require("./tenantData");
+const contractData = require("./contractData");
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
     console.log("\n----- DATABASE SYNCED -----\n");
 
-    await ownerData();
+    await userData();
     console.log("\n----- OWNER DATA -----\n");
 
     await propertyData();
     console.log("\n----- PROPERTY DATA -----\n");
 
-    await tenantData();
+    await contractData();
     console.log("\n----- TENANT DATA -----\n");
 
 
