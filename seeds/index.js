@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection");
-const { Users, Property, Contract } = require("../models");
+const { User, Property, Contract } = require("../models");
 
 const userData = require("../../seeds/userData");
 const propertyData = require("../../seeds/propertyData");
@@ -13,16 +13,15 @@ const seedDatabase = async () => {
     returning: true,
   });
   
-    console.log("\n----- DATABASE SYNCED -----\n");
 
     await userData();
-    console.log("\n----- OWNER DATA -----\n");
+    console.log("\n----- USER DATA -----\n");
 
     await propertyData();
     console.log("\n----- PROPERTY DATA -----\n");
 
     await contractData();
-    console.log("\n----- TENANT DATA -----\n");
+    console.log("\n----- CONTRACT DATA -----\n");
 
 
     process.exit(0);
