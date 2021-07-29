@@ -1,32 +1,25 @@
 const sequelize = require("../config/connection");
 const { User, Property, Contract } = require("../models");
 
-const userData = require("../seeds/userData");
-const propertyData = require("../seeds/propertyData");
-const contractData = require("../seeds/contractData");
+const seedUser = require("../seeds/userData");
+const seedProperty = require("../seeds/propertyData");
+const seedContract = require("../seeds/contractData");
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
 
-    const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
-  
-
-    await userData();
+    await seedUser();
     console.log("\n----- USER DATA -----\n");
 
-    await propertyData();
+    await seedProperty();
     console.log("\n----- PROPERTY DATA -----\n");
 
-    await contractData();
+    await seedContract();
     console.log("\n----- CONTRACT DATA -----\n");
 
 
     process.exit(0);
-
-
-};
+  };
+  
 
 seedDatabase();
