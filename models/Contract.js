@@ -8,15 +8,16 @@ class Contract extends Model {}
 Contract.init(
   {
     id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      primaryKey:true,
     },
     length: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "contract",
