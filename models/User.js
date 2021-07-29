@@ -39,7 +39,8 @@ User.init(
       },
     },
     phone: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING,
+        unique:true
     }
   },
   {

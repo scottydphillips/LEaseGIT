@@ -11,7 +11,7 @@ User.hasMany(Property, {
    
 
 //Property belongs to one user
-Property.belongsToOne(User, {
+Property.belongsTo(User, {
   foreignKey: "userId",
   onDelete: "CASCADE",
 });
