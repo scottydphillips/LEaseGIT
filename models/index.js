@@ -3,7 +3,7 @@ const Property = require("./Property");
 const Contract = require("./Contract");
 
 //User has many properties
-Users.hasMany(Property, {
+User.hasMany(Property, {
     foreignKey: 'userId',
     onDelete: 'CASCADE'
   
@@ -11,7 +11,7 @@ Users.hasMany(Property, {
 });
 
 //Property belongs to one user
-Property.belongsTo(Users, {
+Property.belongsTo(User, {
   
   
 });

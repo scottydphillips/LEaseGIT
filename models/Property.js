@@ -23,7 +23,7 @@ Property.init({
   property_id: {
     type: DataTypes.INTEGER,
     references: {
-      model: "property_id",
+      model: "property",
       key: "id",
     },
   },
