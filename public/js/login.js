@@ -11,9 +11,9 @@ const loginFormHandler = async (event) => {
 				headers: { 'Content-Type': 'application/json' },
 			});
 
-			if (response.ok && User.value == 'owner') {
+			if (response.ok && User.role == 'owner') {
 				document.location.replace('/owner');
-			} else if (response.ok && User.value == 'tenant') 
+			} else if (response.ok && User.role == 'tenant') 
 				document.location.replace('/tenant')
 				else {
 				alert(response.StatusText);
