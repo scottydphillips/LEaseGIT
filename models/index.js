@@ -9,13 +9,13 @@ Users.hasMany(Property, {
 });
 
 //Property belongs to one user
-Property.belongsToOne(Users, {
+Property.belongsTo(Users, {
   
   
 });
 
 //Contract belongs to one property
-Contract.belongsToOne(Property,{
+Contract.belongsTo(Property,{
 
 
 })

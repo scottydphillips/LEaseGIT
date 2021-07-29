@@ -4,9 +4,38 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{{!-- Fonts --}}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Arya&display=swap" rel="stylesheet">
+	{{!-- Bootstrap --}}
+	<link rel="stylesheet" href="/css/jass.css">
+	<link rel="stylesheet" href="/css/style.css">
 	<title>LEaseGIT</title>
 </head>
 <body>
-	
+	<div class='flex-column justify-space-around'>
+		<header class='display-flex justify-space-between align-center p-2'>
+			<h1>LEaseGIT</h1>
+			<nav>
+				{{#if logged_in}}
+				<a href='/owner'>Owner Portal</a>
+				<a href='/tenant'>Tenant Portal</a>
+				<button class='no-button' id='logout'>Logout</button>
+				{{else}}
+				<a href='/login'>Login</a>
+				{{/if}}
+			</nav>
+		</header>
+		<main class='container container-fluid mt-5'>
+				{{{ body }}}
+		</main>
+		<footer>
+
+		</footer>
+	</div>
+	{{#if logged_in}}
+	<script src='/public/js/logout.js'></script>
+	{{/if}}
 </body>
 </html>

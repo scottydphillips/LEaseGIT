@@ -1,0 +1,4 @@
+/* Apply custom font to all page elements */
+* {
+    font-family: 'Arya', sans-serif;
+}
