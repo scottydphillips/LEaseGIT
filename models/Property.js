@@ -21,15 +21,11 @@ Property.init({
   },
   property_id: {
     type: DataTypes.INTEGER,
-    references: {
-      model: "",
-      key: "id",
-    },
-  },
+  }
 },
+
 {
     sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'property',

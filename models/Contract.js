@@ -10,13 +10,12 @@ Contract.init(
     id: {
       type: DataTypes.INTEGER
     },
-    length: {
-      type: DataTypes.STRING
+    term: {
+      type: DataTypes.INTEGER
     },
   },
   {
     sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "contract",
