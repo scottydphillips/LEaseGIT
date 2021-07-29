@@ -3,7 +3,10 @@ function begin() {
     Render = Matter.Render,
     World = Matter.World,
     Bodies = Matter.Bodies,
-    Runner = Matter.Runner;
+    Runner = Matter.Runner,
+    Composite = Matter.Composite,
+    MouseConstraint = Matter.MouseConstraint,
+    Mouse = Matter.Mouse;
 
 const engine = Engine.create();
 const render = Render.create({
@@ -12,7 +15,8 @@ const render = Render.create({
     options: {
         width: window.innerWidth * 0.8,
         height: window.innerHeight * 0.8,
-        wireframes: false
+        wireframes: false,
+        background: 'white'
     }
 });
 engine.gravity.y = 0;
@@ -24,6 +28,22 @@ const furnitureFour = Bodies.rectangle(600, 500, 180, 90);
 
 //put furniture in world
 World.add(engine.world, [furnitureOne, furnitureTwo, furnitureThree, furnitureFour]);
+
+var mouse = Mouse.create(render.canvas),
+        mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.2,
+                render: {
+                    visible: false
+                }
+            }
+        });
+
+Composite.add(engine.world, mouseConstraint);
+
+//synce mouse to render
+render.mouse = mouse;
 
 Runner.run(engine);
 Render.run(render);
