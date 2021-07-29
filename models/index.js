@@ -1,9 +1,11 @@
-const Users = require("./Users");
+const User = require("./User");
 const Property = require("./Property");
 const Contract = require("./Contract");
 
 //User has many properties
 Users.hasMany(Property, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE'
   
    
 });
@@ -21,13 +23,13 @@ Contract.belongsTo(Property,{
 })
 
 //Property has one contract 
-Property.hasOne(Contract, {
+//Property.hasOne(Contract, {
   
   
-});
+//});
 
 
 
 
 
-module.exports = { Users, Property, Contract };
+module.exports = { User, Property, Contract };
