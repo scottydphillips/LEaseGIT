@@ -1,9 +1,9 @@
 const sequelize = require("../config/connection");
 const { User, Property, Contract } = require("../models");
 
-const userData = require("../../seeds/userData");
-const propertyData = require("../../seeds/propertyData");
-const contractData = require("./contractData");
+const userData = require("../seeds/userData");
+const propertyData = require("../seeds/propertyData");
+const contractData = require("../seeds/contractData");
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
