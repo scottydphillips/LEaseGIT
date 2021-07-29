@@ -11,8 +11,8 @@ Contract.init(
       type: DataTypes.INTEGER,
       primaryKey:true,
     },
-    length: {
-      type: DataTypes.STRING,
+    term: {
+      type: DataTypes.INTEGER,
     },
   },
   {

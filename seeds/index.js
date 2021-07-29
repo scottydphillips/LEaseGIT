@@ -7,16 +7,20 @@ const contractData = require("./contractData");
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
-    console.log("\n----- DATABASE SYNCED -----\n");
+
+    const users = await User.bulkCreate(userData, {
+      individualHooks: true,
+      returning: true,
+    });
 
     await userData();
-    console.log("\n----- OWNER DATA -----\n");
+    console.log("\n----- USER DATA -----\n");
 
     await propertyData();
     console.log("\n----- PROPERTY DATA -----\n");
 
     await contractData();
-    console.log("\n----- TENANT DATA -----\n");
+    console.log("\n----- CONTRACT DATA -----\n");
 
 
     process.exit(0);
