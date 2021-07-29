@@ -10,9 +10,11 @@ const loginFormHandler = async (event) => {
 			headers: { 'Content-Type': 'application/json' },
 		});
 
-		if (response.ok) {
-			document.location.replace('/user');
-		} else {
+		if (response.ok && User.value == 'owner') {
+			document.location.replace('/owner');
+		} else if (response.ok && User.value == 'tenant') 
+			document.location.replace('/tenant')
+			else {
 			alert(response.StatusText);
 		}
 	}
