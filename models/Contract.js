@@ -8,7 +8,8 @@ class Contract extends Model {}
 Contract.init(
   {
     id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      primaryKey:true,
     },
     term: {
       type: DataTypes.INTEGER
@@ -16,6 +17,7 @@ Contract.init(
   },
   {
     sequelize,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: "contract",

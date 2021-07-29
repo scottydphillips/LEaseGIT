@@ -11,17 +11,16 @@ Users.hasMany(Property, {
 });
 
 //Property belongs to one user
-Property.belongsToOne(Users, {
-  foreignKey:'userId',
-  onDelete: 'CASCADE'
+Property.belongsTo(Users, {
+  
   
 });
 
 //Contract belongs to one property
-Contract.belongsToOne(Property, {
-  foreignKey: "propertyId",
-  onDelete: "CASCADE",
-});
+Contract.belongsTo(Property,{
+
+
+})
 
 //Property has one contract 
 //Property.hasOne(Contract, {

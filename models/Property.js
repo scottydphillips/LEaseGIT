@@ -10,6 +10,7 @@ Property.init({
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
+    primaryKey:true,
   },
   address: {
     type: DataTypes.STRING,
@@ -21,7 +22,11 @@ Property.init({
   },
   property_id: {
     type: DataTypes.INTEGER,
-  }
+    references: {
+      model: "property_id",
+      key: "id",
+    },
+  },
 },
 
 {

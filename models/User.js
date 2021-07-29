@@ -16,6 +16,7 @@ User.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      primaryKey:true,
     },
     role: {
       type: DataTypes.STRING,
@@ -26,6 +27,7 @@ User.init(
       allowNull: false,
       validate: {
         len: [8],
+        isAlphanumeric: true,
       },
     },
     email: {

@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS realstate_db;
-CREATE DATABASE realstate_db;
+DROP DATABASE IF EXISTS realestate_db;
+CREATE DATABASE realestate_db;
 
  
