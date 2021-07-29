@@ -25,6 +25,10 @@ const furnitureOne = Bodies.rectangle(400, 200, 70, 30);
 const furnitureTwo = Bodies.rectangle(450, 300, 100, 50);
 const furnitureThree = Bodies.rectangle(500, 400, 130, 65);
 const furnitureFour = Bodies.rectangle(600, 500, 180, 90);
+furnitureOne.frictionAir = 0.2;
+furnitureTwo.frictionAir = 0.2;
+furnitureThree.frictionAir = 0.2;
+furnitureFour.frictionAir = 0.2;
 
 //put furniture in world
 World.add(engine.world, [furnitureOne, furnitureTwo, furnitureThree, furnitureFour]);
