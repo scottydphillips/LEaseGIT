@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+const sequelize = require('../config/connection');
 const { User } = require('../models');
 
 const userData = [
@@ -24,6 +26,15 @@ const userData = [
   },
 ];
 
-const seedUser = () => User.bulkCreate(userData);
+const seedUser = async () =>{
+  await sequelize.sync({force:true});
+
+  const users = await User.bulkCreate(userData,{
+    individualHooks: true,
+    returning: true,
+  })
+
+  process.exit(0);
+}
 
 module.exports = seedUser;
