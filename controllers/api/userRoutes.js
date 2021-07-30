@@ -8,6 +8,7 @@ router.post('/', async (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
+        role: req.body.role
       });
   
       req.session.save(() => {
@@ -45,11 +46,12 @@ router.post('/login', async (req, res) => {
   
       // Create session variables based on the logged in user
       req.session.save(() => {
+        req.session.user_id = userData.id,
         req.session.loggedIn = true;
   
         res
           .status(200)
-          .json({ user: UserData, message: 'You are now logged in!' });
+          .json({ user: userData, message: 'You are now logged in!' });
       });
     } catch (err) {
         console.log(err);
