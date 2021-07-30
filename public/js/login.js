@@ -1,8 +1,8 @@
 const loginFormHandler = async (event) => {
 	event.preventDefault();
 	try {
-		const email = document.querySelector('#email-login').value.trim();
-		const password = document.querySelector('#password-login').value.trim()
+		const email = document.getElementById('email-login').value.trim();
+		const password = document.getElementById('password-login').value.trim()
 
 		if (email && password) {
 			const response = await fetch('api/user', {
@@ -27,9 +27,8 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
 	event.preventDefault();
 	try {
-		const name = document.querySelector('#name-signup').value.trim();
-		const email = document.querySelector('#email-signup').value.trim();
-		const password = document.querySelector('#password-signup').value.trim();
+		const email = document.getElementById('email-signup').value.trim();
+		const password = document.getElementById('password-signup').value.trim();
 		let radioValue = () => {
 			document.getElementById('result');
 			let radioEl = document.querySelector('.radio');
@@ -39,10 +38,10 @@ const signupFormHandler = async (event) => {
 				}
 			}
 		}
-		if(name && password) {
+		if(email && password) {
 			const response = await fetch('api/user', {
 				method: 'POST',
-				body: JSON.stringify({ name, email, password, radioValue }),
+				body: JSON.stringify({ email, password, radioValue }),
 				headers: { 'Content-Type': 'application/json' },
 			});
 			console.log(response);
@@ -57,5 +56,5 @@ const signupFormHandler = async (event) => {
 	}
 };
 
-document.querySelector('#login-button').addEventListener('submit', loginFormHandler);
-document.querySelector('#signup-button').addEventListener('submit', signupFormHandler);
+document.getElementById('login-button').addEventListener('click', loginFormHandler);
+document.getElementById('signup-button').addEventListener('click', signupFormHandler);
