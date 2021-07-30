@@ -1,24 +1,29 @@
 const router = require("express").Router();
-const {Owner} = require("../../public/js");
+
+const { Contract, Property } = require("../../models");
 
 // Create Route to owner post
-router.post("/owner", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const ownerData = await Owner.create({
-      propertyAddress: req.body.propertyAddress,
-      leaseLength: req.body.leaseLength,
-      
+    const ownerData = await Property.create({
+      address: req.body.address,
+      availability: 1,
     });
+      const leaseLength = await Contract.create({
+        term: req.body.term,
 
-    req.session.save(() => {
+      });
+      req.session.save(() => {
       req.session.Owner = true;
 
       res.status(200).json(ownerData);
+      res.status(200).json(leaseLength);
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
