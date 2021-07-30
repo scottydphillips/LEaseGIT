@@ -10,7 +10,7 @@ const loginFormHandler = async (event) => {
 				body: JSON.stringify({ email,password }),
 				headers: { 'Content-Type': 'application/json' },
 			});
-
+			console.log(response)
 			if (response.ok && User.role == 'owner') {
 				document.location.replace('/owner');
 			} else if (response.ok && User.role == 'tenant') 
@@ -30,14 +30,22 @@ const signupFormHandler = async (event) => {
 		const name = document.querySelector('#name-signup').value.trim();
 		const email = document.querySelector('#email-signup').value.trim();
 		const password = document.querySelector('#password-signup').value.trim();
-
+		let radioValue = () => {
+			document.getElementById('result');
+			let radioEl = document.querySelector('.radio');
+			for(i=0; i<radioEl.length; i++) {
+				if(radioEl[i].checked) {
+					return document.getElementsByTagName('result')+radioEl[i].value;
+				}
+			}
+		}
 		if(name && password) {
 			const response = await fetch('api/user', {
 				method: 'POST',
-				body: JSON.stringify({ name, email, password }),
+				body: JSON.stringify({ name, email, password, radioValue }),
 				headers: { 'Content-Type': 'application/json' },
 			});
-
+			console.log(response);
 			if(response.ok) {
 				document.location.replace('/login');
 			} else {
@@ -49,5 +57,5 @@ const signupFormHandler = async (event) => {
 	}
 };
 
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+document.querySelector('#login-button').addEventListener('submit', loginFormHandler);
+document.querySelector('#signup-button').addEventListener('submit', signupFormHandler);
