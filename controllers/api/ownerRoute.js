@@ -3,7 +3,7 @@ const { Contract, Property } = require("../../models");
 
 
 // Create Route to owner post
-router.post("/owner", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const ownerData = await Property.create({
       address: req.body.address,
