@@ -1,27 +1,25 @@
 const loginFormHandler = async (event) => {
 	event.preventDefault();
-	try {
 		const email = document.getElementById('email-login').value.trim();
 		const password = document.getElementById('password-login').value.trim()
 
 		if (email && password) {
 			const response = await fetch('api/user/login', {
 				method: 'POST',
-				body: JSON.stringify({ email,password }),
-				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, password }),
+				headers: { 'Content-Type': 'application/json' }
 			});
-			console.log(response)
-			if (response.ok && User.role == 'owner') {
+			console.log(response);
+			// const getRole = await fetch('api/user', {
+			// 	method: 'GET',
+			// 	body: JSON.parse({ role }),
+			// });
+			if (response.ok) {
 				document.location.replace('/owner');
-			} else if (response.ok && User.role == 'tenant') 
-				document.location.replace('/tenant')
-				else {
+			}	else {
 				alert(response.StatusText);
 			}
 		}
-	} catch (err) {
-		if (err) console.error(err);
-	}
 };
 
 const signupFormHandler = async (event) => {
