@@ -18,17 +18,14 @@ User.init(
       autoIncrement: true,
       primaryKey:true,
     },
+    username:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique:true,
+    },
     role: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [8],
-        isAlphanumeric: true,
-      },
     },
     email: {
       type: DataTypes.STRING,
@@ -36,6 +33,14 @@ User.init(
       unique: true,
       validate: {
         isEmail: true,
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8],
+        isAlphanumeric: true,
       },
     },
     phone: {
