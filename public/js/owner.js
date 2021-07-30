@@ -7,7 +7,7 @@ const ownerFormHandler = async (event) => {
   const leaseLength = document.getElementById("lease-length").value;
 
   if (propertyAddress && leaseLength) {
-    const response = await fetch("/api/user/owner", {
+    const response = await fetch("/api/owner", {
       method: "POST",
       body: JSON.stringify({ propertyAddress, leaseLength }),
       headers: { "content-type": "owner/json" },
@@ -22,3 +22,5 @@ const ownerFormHandler = async (event) => {
   }
 }; 
     
+
+document.getElementById('owner-post').addEventListener('submit',ownerFormHandler);
