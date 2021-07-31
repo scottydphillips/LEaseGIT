@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { Contract, Property } = require("../../models");
+const { Contract, Property, Owner } = require("../../models");
+
 
 
 // Create Route to owner post

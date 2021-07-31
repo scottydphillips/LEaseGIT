@@ -30,12 +30,15 @@ const signupFormHandler = async (event) => {
   console.log(userPassword);
   let userRole;
   const getRole = () => {
-    if (document.getElementsByName('selectRole').checked == 'owner') {
-			userRole = 'owner'
-		} else {
-			userRole = 'tenant'
-		}
-	}
+    let radio = document.getElementsByName('selectRole');
+    for (let i=0; i<radio.length; i++) {
+      if(radio[0].checked) {
+        userRole = 'owner';
+      } else {
+        userRole = 'tenant';
+      }
+  	}
+  }
   getRole();
   if (userName && userEmail && userPassword && userRole) {
     console.log(userName + userEmail + userPassword + userRole);
@@ -45,16 +48,18 @@ const signupFormHandler = async (event) => {
       password: userPassword,
       role: userRole,
     };
-  //   const response = await fetch("api/user", {
-  //     method: "POST",
-  //     body: JSON.stringify(user),
-  //     headers: { "Content-Type": "application/json" },
-  //   });
-  //   if (response.ok) {
-  //     // document.location.replace("/login");
-  //   } else {
-  //     alert(response.StatusText);
-  //   }
+    const response = await fetch("api/user", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok && userRole == 'owner') {
+      document.location.replace("/owner");
+    } else if (response.ok && userRole == 'tenant') {
+      document.location.replace('/tenant')
+    } else {
+      alert(response.StatusText);
+    }
   }
 };
 
