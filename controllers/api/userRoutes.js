@@ -2,24 +2,18 @@ const router = require('express').Router();
 const{User} = require('../../models');
 
 router.get('/',async (req,res)=>{
-  if(req.session.loggedIn){
-    try {
-      const userData = await User.findOne({ where: { email: req.body.email } });
-      if(userData.role == 'owner'){
-        res.render('owner');
-        return;
-      }else{
-        res.render('tenant');
-        return;
-      }
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  }else{
-    res.end('You must login first');
-  }
-  
-  res.render('owner');
+
+  res.json({message:req.body.email});
+  // if(req.session.loggedIn){
+  //   const userData = await User.findOne({ where: { email: 'jimmy@hotmail.com'} });
+  //   if (userData.role === "owner") {
+  //     res.redirect('/api/owner');
+  //   }else{
+  //     res.redirect('/api/tenant');
+  //   }
+  // }else{
+  //   res.redirect('/login');
+  // }
 })
 
 // CREATE new user
