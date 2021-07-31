@@ -23,11 +23,8 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
   const userName = document.getElementById("name-signup").value.trim();
-  console.log(userName);
   const userEmail = document.getElementById("email-signup").value.trim();
-  console.log(userEmail);
   const userPassword = document.getElementById("password-signup").value.trim();
-  console.log(userPassword);
   let userRole;
   const getRole = () => {
     let radio = document.getElementsByName('selectRole');
@@ -41,7 +38,6 @@ const signupFormHandler = async (event) => {
   }
   getRole();
   if (userName && userEmail && userPassword && userRole) {
-    console.log(userName + userEmail + userPassword + userRole);
     const user = {
       username: userName,
       email: userEmail,
