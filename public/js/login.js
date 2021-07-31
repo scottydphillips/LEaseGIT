@@ -11,9 +11,9 @@ const loginFormHandler = async (event) => {
     });
     console.log(response);
     if (response.role = "owner") {
-      document.location.replace("/owner");
+      document.location.replace("api/owner");
     } else if (response.role = "tenant") {
-		 document.location.replace("/tenant");
+		 document.location.replace("api/tenant");
   	} else {
     alert(response.StatusText);
 	  }

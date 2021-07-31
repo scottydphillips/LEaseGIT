@@ -1,6 +1,27 @@
 const router = require('express').Router();
 const{User} = require('../../models');
 
+router.get('/',async (req,res)=>{
+  if(req.session.loggedIn){
+    try {
+      const userData = await User.findOne({ where: { email: req.body.email } });
+      if(userData.role == 'owner'){
+        res.render('owner');
+        return;
+      }else{
+        res.render('tenant');
+        return;
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }else{
+    res.end('You must login first');
+  }
+  
+  res.render('owner');
+})
+
 // CREATE new user
 router.post('/', async (req, res) => {
     try {
