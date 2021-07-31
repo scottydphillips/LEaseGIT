@@ -6,7 +6,7 @@ const loginFormHandler = async (event) => {
   if (email && password) {
     const response = await fetch("api/user/login", {
       method: "POST",
-      body: JSON.stringify({ email, password, role }),
+      body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
     });
     console.log(response);
@@ -30,15 +30,12 @@ const signupFormHandler = async (event) => {
   console.log(userPassword);
   let userRole;
   const getRole = () => {
-    let role = document.getElementById('radio-form').forms[0];
-		let txt = '';
-		for (let i=0; i<role.length; i++) {
-			if(role[i].checked) {
-				txt = txt + role[i].value + ' ';
-			}
+    if (document.getElementsByName('selectRole').checked == 'owner') {
+			userRole = 'owner'
+		} else {
+			userRole = 'tenant'
 		}
-		userRole = document.getElementById('radio-form').value;
-  };
+	}
   getRole();
   if (userName && userEmail && userPassword && userRole) {
     console.log(userName + userEmail + userPassword + userRole);
