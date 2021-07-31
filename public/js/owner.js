@@ -1,5 +1,3 @@
-
-
 const ownerFormHandler = async (event) => {
   event.preventDefault();
 
@@ -13,14 +11,17 @@ const ownerFormHandler = async (event) => {
       headers: { "content-type": "owner/json" },
     });
     console.log(response);
-    if(response.ok) {
-        document.location.replace('/owner');
+    if (response.ok) {
+      document.location.replace("/owner");
     } else {
-        alert(response.statusText);
+      alert(response.statusText);
     }
-
   }
-}; 
-    
+};
 
-document.getElementById('owner-post').addEventListener('submit',ownerFormHandler);
+document
+  .getElementById("property-address")
+  .addEventListener("submit", ownerFormHandler);
+document
+  .getElementById("lease-length")
+  .addEventListener("submit", ownerFormHandler);
