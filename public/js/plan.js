@@ -1,44 +1,34 @@
 
 
 
-const loadImage = (url, onSuccess, onError) => {
+const loadImage = (imageUrl, whenLoaded) => {
     const img = new Image();
     img.onload = () => {
-      onSuccess(img.src);
+      whenLoaded(img);
     };
-    img.onerror = onError();
-    img.src = url;
+    img.src = imageUrl;
   };
 
-  const loadSofa = (x, y) => {
-    loadImage(
-        "../../public/images/furniture/sofa.png",
-        url => {
-          console.log("Success");
-    
-          let newSofa = Bodies.rectangle(x, y, 340, 120, {
-              density: 0.0005,
-              frictionAir: 0.2,
-              restitution: 0.3,
-              friction: 0.01,
-              render: {
-                sprite: {
-                  texture: url, // set texture here
-                  xScale: 0.15,
-                  yScale: 0.15
-                }
+  const addFurniture = (x, y, width, height, imageUrl) => {
+    loadImage(imageUrl,
+      (image) => {
+        let newFurniture = Bodies.rectangle(x, y, width, height, {
+            density: 0.0005,
+            frictionAir: 0.2,
+            restitution: 0.3,
+            render: {
+              sprite: {
+                texture: image.src, // set texture here
+                xScale: (width/image.width) * 1.1,
+                yScale: (height/image.height) * 1.1
               }
-            })
-          
-          World.add(engine.world, [
-            newSofa
-          ]);
-        },
-        () => {
-          console.log("Error  Loading ");
-        }
-      );
-
+            }
+          })
+        World.add(engine.world, [
+          newFurniture
+        ]);
+      }
+    );
   }
 
 
@@ -66,10 +56,12 @@ engine.gravity.y = 0;
 
 let furn;
 
-loadSofa(200, 100);
-loadSofa(400, 300);
-loadSofa(600, 500);
-loadSofa(800, 700);
+const sofaUrl = "../../public/images/furniture/sofa.png";
+
+addFurniture(200, 100, 230, 75, sofaUrl);
+addFurniture(200, 300, 280, 90, sofaUrl);
+addFurniture(200, 500, 400, 200, sofaUrl);
+addFurniture(200, 700, 20, 10, sofaUrl);
 
 var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
