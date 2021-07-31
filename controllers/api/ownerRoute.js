@@ -2,11 +2,10 @@ const router = require("express").Router();
 const { Contract, Property, User } = require("../../models");
 
 // Create Route to Get Owner by email
-router.get("/:email", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const ownerData = await User.findOne({
-      email: req.body.email,
-      
+      where: { email: req.body.email },
     });
 
     res.render("owner", {
@@ -16,7 +15,6 @@ router.get("/:email", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 
 // Create Route to owner post
 router.post("/", async (req, res) => {
