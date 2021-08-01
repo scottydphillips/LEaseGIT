@@ -2,18 +2,7 @@ const router = require('express').Router();
 const{User} = require('../../models');
 
 router.get('/',async (req,res)=>{
-
-  res.json({message:req.body.email});
-  // if(req.session.loggedIn){
-  //   const userData = await User.findOne({ where: { email: 'jimmy@hotmail.com'} });
-  //   if (userData.role === "owner") {
-  //     res.redirect('/api/owner');
-  //   }else{
-  //     res.redirect('/api/tenant');
-  //   }
-  // }else{
-  //   res.redirect('/login');
-  // }
+  res.json(req.body);
 })
 
 // CREATE new user

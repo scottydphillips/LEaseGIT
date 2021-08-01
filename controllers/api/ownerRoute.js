@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Contract, Property, User } = require("../../models");
+const {Property, User } = require("../../models");
 
 // Create Route to Get Owner by email
 router.get("/", async (req, res) => {

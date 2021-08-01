@@ -20,23 +20,14 @@ Property.init({
     type:DataTypes.BOOLEAN,
     default:true,
   },
-  property_id: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: "property",
-      key: "id",
-    },
-  },
 },
-
 {
     sequelize,
     freezeTableName: true,
+    timestamps:false,
     underscored: true,
     modelName: 'property',
   } 
-
-  
 );
 
 module.exports = Property;

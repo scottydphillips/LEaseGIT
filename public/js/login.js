@@ -10,13 +10,16 @@ const loginFormHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     console.log(response);
-    if (response.role = "owner") {
-      document.location.replace("api/owner");
-    } else if (response.role = "tenant") {
-		 document.location.replace("api/tenant");
-  	} else {
-    alert(response.StatusText);
-	  }
+    // if (response.role = "owner") {
+    //   document.location.replace("api/owner");
+    // } else if (response.role = "tenant") {
+		//  document.location.replace("api/tenant");
+  	// } else {
+    // alert(response.StatusText);
+	  // }
+    if(response.ok){
+      document.location.replace("api/listing");
+    }
 	};
 };
 
@@ -49,11 +52,13 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify(user),
       headers: { "Content-Type": "application/json" },
     });
-    if (response.ok && userRole == 'owner') {
-      document.location.replace("/owner");
-    } else if (response.ok && userRole == 'tenant') {
-      document.location.replace('/tenant')
-    } else {
+    if (response.ok) {
+      document.location.replace("/listing");
+    } 
+    // else if (response.ok && userRole == 'tenant') {
+    //   document.location.replace('/tenant')
+    // } 
+    else {
       alert(response.StatusText);
     }
   }
