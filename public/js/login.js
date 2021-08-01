@@ -53,7 +53,7 @@ const signupFormHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("/listing");
+      document.location.replace("api/listing");
     } 
     // else if (response.ok && userRole == 'tenant') {
     //   document.location.replace('/tenant')
