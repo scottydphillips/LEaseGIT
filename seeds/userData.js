@@ -1,6 +1,3 @@
-const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
-const { User } = require('../models');
 
 const userData = [
   {
@@ -24,17 +21,13 @@ const userData = [
     password: "Password123!",
     phone: "333.333.3333",
   },
+  {
+    username: "Pia",
+    role: "owner",
+    email: "Pia@hotmail.com",
+    password: "Password123!",
+    phone: "444.444.4444",
+  },
 ];
 
-const seedUser = async () =>{
-  await sequelize.sync({force:true});
-
-  const users = await User.bulkCreate(userData,{
-    individualHooks: true,
-    returning: true,
-  })
-
-  process.exit(0);
-}
-
-module.exports = seedUser;
+module.exports = userData;

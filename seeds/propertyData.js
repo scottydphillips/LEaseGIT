@@ -1,6 +1,3 @@
-const sequelize = require('../config/connection');
-const{ Property } = require('../models');
-
 const propertyData = [
   { 
       address: "123 Alpharetta",
@@ -16,14 +13,5 @@ const propertyData = [
   },
 ];
 
-  const seedProperty = async () =>{
-  await sequelize.sync({force:true});
-  const properties = await Property.bulkCreate(propertyData,{
-    individualHooks: true,
-    returning: true,
-  })
 
-  process.exit(0);
-};
-
-module.exports = seedProperty;
+module.exports = propertyData;
