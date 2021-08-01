@@ -1,4 +1,5 @@
-const{Property} = require('../models');
+const sequelize = require('../config/connection');
+const{ Property } = require('../models');
 
 const propertyData = [
   { 
@@ -13,7 +14,6 @@ const propertyData = [
     address: "222 Atlanta",
     availability: false,
   },
-
 ];
 
   const seedProperty = async () =>{
@@ -24,6 +24,6 @@ const propertyData = [
   })
 
   process.exit(0);
-}
+};
 
 module.exports = seedProperty;
