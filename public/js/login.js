@@ -4,21 +4,15 @@ const loginFormHandler = async (event) => {
   const password = document.getElementById("password-login").value.trim();
 
   if (email && password) {
-    const response = await fetch("api/user/login", {
+    const response = await fetch("/api/user/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
     });
-    console.log(response);
-    // if (response.role = "owner") {
-    //   document.location.replace("api/owner");
-    // } else if (response.role = "tenant") {
-		//  document.location.replace("api/tenant");
-  	// } else {
-    // alert(response.StatusText);
-	  // }
     if(response.ok){
-      document.location.replace("api/listing");
+      document.location.replace("/");
+    }else{
+      alert('failed to log in');
     }
 	};
 };
@@ -47,19 +41,16 @@ const signupFormHandler = async (event) => {
       password: userPassword,
       role: userRole,
     };
-    const response = await fetch("api/user", {
+    const response = await fetch("/api/user/register", {
       method: "POST",
       body: JSON.stringify(user),
       headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
-      document.location.replace("api/listing");
+      document.location.replace("/");
     } 
-    // else if (response.ok && userRole == 'tenant') {
-    //   document.location.replace('/tenant')
-    // } 
     else {
-      alert(response.StatusText);
+      alert("failed to register");
     }
   }
 };
