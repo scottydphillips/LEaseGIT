@@ -14,7 +14,7 @@ const loadImage = (imageUrl, whenLoaded) => {
   const addFloor = (imageUrl) => {
     loadImage(imageUrl,
       (image) => {
-        let newFloor = Bodies.rectangle(window.innerWidth/2 * 0.8, window.innerHeight/2 * 0.8, 1, 1, {
+        let newFloor = Bodies.rectangle(houseWidth/2, houseHeight/2, 1, 1, {
             density: 0.0005,
             frictionAir: 0.2,
             restitution: 0.3,
@@ -139,17 +139,14 @@ const workspaceUrl = "../../public/images/furniture/workspace.png";
 const diningRoomTableUrl = "../../public/images/furniture/dining-room-table.png";
 const roundMarbleTableUrl = "../../public/images/furniture/round-marble-table.png";
 const roundWoodTableUrl = "../../public/images/furniture/round-wood-table.png";
-// const carpet1Url = "../../public/images/furniture/carpet1.png";
-// const carpet2Url = "../../public/images/furniture/carpet2.png";
-
 
 //floor
 addFloor(placeholderFlooringUrl);
 //walls
-addWall(0, 0, houseWidth*2, 90, wallUrl);
-addWall(0, 0, 90, houseHeight*2, wallUrl);
-addWall(houseWidth, 0, 90, houseHeight*2, wallUrl);
-addWall(0, houseHeight, houseWidth*2, 90, wallUrl);
+addWall(0, 0, houseWidth*2, 50, wallUrl);
+addWall(0, 0, 50, houseHeight*2, wallUrl);
+addWall(houseWidth, 0, 50, houseHeight*2, wallUrl);
+addWall(0, houseHeight, houseWidth*2, 50, wallUrl);
 
 addRectFurniture(80, 50, 250, 100, loveseatUrl);
 addRectFurniture(300, 50, 300, 110, sofaUrl);

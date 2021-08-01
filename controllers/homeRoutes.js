@@ -3,7 +3,7 @@ const { User, Property } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Prevent non logged in users from viewing the homepage
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   //if logged in, show the listings of all properties
   try {
     //get all properties from DB
