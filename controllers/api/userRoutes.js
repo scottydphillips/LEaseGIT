@@ -1,24 +1,25 @@
 const router = require('express').Router();
 const{User} = require('../../models');
+const withAuth = require('../../utils/auth');
 
-router.get('/',async (req,res)=>{
-  res.json(req.body);
+router.get('/',async(req,res)=>{
+  res.json({message: 'user profile page' });
 })
 
 // CREATE new user
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
-      const UserData = await User.create({
+      const userData = await User.create({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
         role: req.body.role
       });
-  
+
+      //initialize user_id in session
       req.session.save(() => {
         req.session.loggedIn = true;
-  
-        res.status(200).json(UserData);
+        res.redirect('/');
       });
     } catch (err) {
       console.log(err);
@@ -50,9 +51,7 @@ router.post('/login', async (req, res) => {
   
       // Create session variables based on the logged in user
       req.session.save(() => {
-        req.session.user_id = userData.id,
         req.session.loggedIn = true;
-  
         res
           .status(200)
           .json({ user: userData, message: 'You are now logged in!' });
