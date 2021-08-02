@@ -16,10 +16,7 @@ const seedDatabase = async () => {
     });
     console.log("\n----- USER DATA -----\n");
 
-    // await seedContract();
-    // console.log("\n----- CONTRACT DATA -----\n");
-
     process.exit(0);
   };
-  
+ 
 seedDatabase();

@@ -8,13 +8,14 @@ const loadImage = (imageUrl, whenLoaded) => {
       whenLoaded(img);
     };
     img.src = imageUrl;
-  };
+};
 
   //Add a rectangular piece of furniture to the engine and renderer
+  var floor;
   const addFloor = (imageUrl) => {
     loadImage(imageUrl,
       (image) => {
-        let newFloor = Bodies.rectangle(houseWidth/2, houseHeight/2, 1, 1, {
+        floor = Bodies.rectangle(houseWidth/2, houseHeight/2, 1, 1, {
             density: 0.0005,
             frictionAir: 0.2,
             restitution: 0.3,
@@ -31,9 +32,9 @@ const loadImage = (imageUrl, whenLoaded) => {
               'mask': 0,
             }
           })
-        World.add(engine.world, [newFloor]);
-      });
-  }
+        World.add(engine.world, [floor]);
+    });
+}
 
   //Add floor and remove collision
   const addWall = (x, y, width, height, imageUrl) => {
@@ -74,8 +75,8 @@ const loadImage = (imageUrl, whenLoaded) => {
           }
         })
         World.add(engine.world, [newFurniture]);
-      });
-    }
+    });
+  }
 
     //Add floor and remove collision
     const addRectFurniture = (x, y, width, height, imageUrl) => {
@@ -94,18 +95,18 @@ const loadImage = (imageUrl, whenLoaded) => {
               }
             })
           World.add(engine.world, [newFurniture]);
-        });
-    }
+      });
+  }
     
     
-    const Engine = Matter.Engine,
-    Render = Matter.Render,
-    World = Matter.World,
-    Bodies = Matter.Bodies,
-    Runner = Matter.Runner,
-    Composite = Matter.Composite,
-    MouseConstraint = Matter.MouseConstraint,
-    Mouse = Matter.Mouse;
+const Engine = Matter.Engine,
+Render = Matter.Render,
+World = Matter.World,
+Bodies = Matter.Bodies,
+Runner = Matter.Runner,
+Composite = Matter.Composite,
+MouseConstraint = Matter.MouseConstraint,
+Mouse = Matter.Mouse;
     
 const engine = Engine.create();
 const render = Render.create({
@@ -119,9 +120,6 @@ const render = Render.create({
     }
 });
 engine.gravity.y = 0;
-
-let furn;
-
 
 //floor path
 const placeholderFlooringUrl = "../../public/images/house/chevron-hardwood-floor.png"
@@ -142,22 +140,6 @@ const roundWoodTableUrl = "../../public/images/furniture/round-wood-table.png";
 
 //floor
 addFloor(placeholderFlooringUrl);
-//walls
-addWall(0, 0, houseWidth*2, 50, wallUrl);
-addWall(0, 0, 50, houseHeight*2, wallUrl);
-addWall(houseWidth, 0, 50, houseHeight*2, wallUrl);
-addWall(0, houseHeight, houseWidth*2, 50, wallUrl);
-
-addRectFurniture(80, 50, 250, 100, loveseatUrl);
-addRectFurniture(300, 50, 300, 110, sofaUrl);
-addRectFurniture(1200, 200, 200, 350, bed1Url);
-addRectFurniture(800, 200, 200, 350, bed2Url);
-addRectFurniture(600, 600, 120, 30, tvStandUrl);
-addRectFurniture(1000, 100, 70, 70, nightstandUrl);
-addRectFurniture(1000, 600, 200, 200, workspaceUrl);
-addRectFurniture(100, 600, 250, 200, diningRoomTableUrl);
-addRoundFurniture(500, 300, 50, roundMarbleTableUrl);
-addRoundFurniture(700, 300, 50, roundWoodTableUrl);
 
 var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
@@ -172,9 +154,34 @@ var mouse = Mouse.create(render.canvas),
 
 Composite.add(engine.world, mouseConstraint);
 
-//synce mouse to render
+//sync mouse to render
 render.mouse = mouse;
 
 Runner.run(engine);
 Render.run(render);
 
+//Load wall and furniture textures and create their bodies
+//set brief delay to allow floor to load both its texture and body first
+setTimeout(function(){
+  //walls
+  addWall(0, 0, houseWidth*2, 50, wallUrl);
+  addWall(0, 0, 50, houseHeight*2, wallUrl);
+  addWall(houseWidth, 0, 50, houseHeight*2, wallUrl);
+  addWall(0, houseHeight, houseWidth*2, 50, wallUrl);
+  //furniture
+  addRectFurniture(80, 50, 250, 100, loveseatUrl);
+  addRectFurniture(300, 50, 300, 110, sofaUrl);
+  addRectFurniture(1200, 200, 200, 350, bed1Url);
+  addRectFurniture(800, 200, 200, 350, bed2Url);
+  addRectFurniture(600, 600, 120, 30, tvStandUrl);
+  addRectFurniture(1000, 100, 70, 70, nightstandUrl);
+  addRectFurniture(1000, 600, 200, 200, workspaceUrl);
+  addRectFurniture(100, 600, 250, 200, diningRoomTableUrl);
+  addRoundFurniture(500, 300, 50, roundMarbleTableUrl);
+  addRoundFurniture(700, 300, 50, roundWoodTableUrl);
+}, 100);
+
+function selectFloor() {
+  let selectedFloor = document.getElementById("floor-picker").value;
+  floor.render.sprite.texture = `../../public/images/house/${selectedFloor}.png`
+}

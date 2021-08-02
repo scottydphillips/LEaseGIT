@@ -18,11 +18,10 @@
 		<header class='display-flex justify-space-between align-center p-2'>
 			<h1><a href="/">LEaseGIT</a></h1>
 			<nav>
-				{{#if loggedIn}}
+			{{#if loggedIn}}
+				<button class='no-button' id='profile'>profile</button>
 				<button class='no-button' id='logout'>Logout</button>
-				{{else}}
-				<a href='/login'>Login</a>
-				{{/if}}
+			{{/if}}
 			</nav>
 		</header>
 		<main class='container container-fluid mt-5'>
@@ -32,8 +31,8 @@
 
 		</footer>
 	</div>
-	{{#if logged_in}}
-	<script src='/public/js/logout.js'></script>
+	{{#if loggedIn}}
+	<script src='/js/logout.js'></script>
 	{{/if}}
 </body>
 </html>
