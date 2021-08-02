@@ -2,7 +2,7 @@ const propertyData = [
   { 
       address: "123 Alpharetta",
       availability: true,
-      owner_id:'4'
+      owner_id:'2'
   },
   { 
     address: "111 Alpharetta",
