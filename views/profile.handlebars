@@ -1,0 +1,15 @@
+<div class='container'>
+    <div class='row gy-3'>
+        <div class='col-md-9'>
+          <h1>User Info:</h1>
+          <h3>Name: {{username}} </h3>
+          <h3>email: {{email}}</h3>
+          <h3>phone: {{phone}}</h3>
+          {{#if isOwner}}
+            <h1>Properties You Own: </h1>
+            {{>listings}}
+          {{/if}}
+          <h1>Saved floor plans: </h1>
+        </div>
+    </div>
+</div>

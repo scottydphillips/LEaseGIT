@@ -1,23 +1,33 @@
-[
+
+const userData = [
   {
-    name: "Jimmy",
-    role: "Owner",
-    email: "Jimmy@hotmail.com",
-    password: "password12345",
-    phone: 444-444-444
+    username: "Jimmy",
+    role: "owner",
+    email: "jimmy@hotmail.com",
+    password: "Password123!",
+    phone: "111.111.1111",
   },
   {
-    name: "Matilda",
-    role: "Tenant",
-    email: "Matilda@gmail.com",
-    password: "password12345",
-    phone: 333-333-333
+    username: "Matilda",
+    role: "tenant",
+    email: "Matilda@hotmail.com",
+    password: "Password123!",
+    phone: "222.222.2222",
   },
   {
-    name: "Scott",
-    role: "Owner",
-    email: "Scott@aol.com",
-    password: "password12345",
-    phone: 222-222-222
+    username: "Scott",
+    role: "tenant",
+    email: "Scott@hotmail.com",
+    password: "Password123!",
+    phone: "333.333.3333",
+  },
+  {
+    username: "Pia",
+    role: "owner",
+    email: "Pia@hotmail.com",
+    password: "Password123!",
+    phone: "444.444.4444",
   },
 ];
+
+module.exports = userData;

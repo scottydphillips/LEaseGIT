@@ -1,18 +1,20 @@
-[
-  {
-    id: "1",
-    address: " ",
-    availability: " Yes/No ",
+const propertyData = [
+  { 
+    address: "123 Alpharetta",
+    availability: true,
+    owner_id:1,
   },
-  {
-    id: "2",
-    address: " ",
-    availability: "Yes/No ",
+  { 
+    address: "111 Alpharetta",
+    availability: true,
+    owner_id:1,
   },
-
-  {
-    id: "3",
-    address: " ",
-    availability: " Yes/No ",
+  { 
+    address: "222 Atlanta",
+    availability: false,
+    owner_id:4,
   },
 ];
+
+
+module.exports = propertyData;

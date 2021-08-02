@@ -14,6 +14,25 @@
 	<title>LEaseGIT</title>
 </head>
 <body>
-	{{{ body }}}
+	<div class='flex-column justify-space-around'>
+		<header class='display-flex justify-space-between align-center p-2'>
+			<h1><a href="/">LEaseGIT</a></h1>
+			<nav>
+			{{#if loggedIn}}
+				<button class='no-button' id='profile'>profile</button>
+				<button class='no-button' id='logout'>Logout</button>
+			{{/if}}
+			</nav>
+		</header>
+		<main class='container container-fluid mt-5'>
+				{{{ body }}}
+		</main>
+		<footer>
+
+		</footer>
+	</div>
+	{{#if loggedIn}}
+	<script src='/js/logout.js'></script>
+	{{/if}}
 </body>
 </html>

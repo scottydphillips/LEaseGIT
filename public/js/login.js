@@ -1,43 +1,65 @@
 const loginFormHandler = async (event) => {
-	event.preventDefault();
-	const email = document.querySelector('#email-login').value.trim();
-	const password = document.querySelector('#password-login').value.trim()
+  event.preventDefault();
+  const email = document.getElementById("email-login").value.trim();
+  const password = document.getElementById("password-login").value.trim();
 
-	if (email && password) {
-		const response = await fetch('api/users/login', {
-			method: 'POST',
-			body: JSON.stringify({ email,password }),
-			headers: { 'Content-Type': 'application/json' },
-		});
-
-		if (response.ok) {
-			document.location.replace('/user');
-		} else {
-			alert(response.StatusText);
-		}
-	}
+  if (email && password) {
+    const response = await fetch("/api/user/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if(response.ok){
+      document.location.replace("/");
+    }else{
+      alert('failed to log in');
+    }
+	};
 };
 
 const signupFormHandler = async (event) => {
-	event.preventDefault();
-	const name = document.querySelector('#name-signup').value.trim();
-	const email = document.querySelector('#email-signup').value.trim();
-	const password = document.querySelector('#password-signup').value.trim();
-
-	if(name && password) {
-		const response = await fetch('api/users', {
-			method: 'POST',
-			body: JSON.stringify({ name, email, password }),
-			headers: { 'Content-Type': 'application/json' },
-		});
-
-		if(response.ok) {
-			document.location.replace('/user');
-		} else {
-			alert(response.StatusText);
-		}
-	}
+  event.preventDefault();
+  const userName = document.getElementById("name-signup").value.trim();
+  const userEmail = document.getElementById("email-signup").value.trim();
+  const userPassword = document.getElementById("password-signup").value.trim();
+  const userPhone = document.getElementById("phone-signup").value.trim();
+  let userRole;
+  const getRole = () => {
+    let radio = document.getElementsByName('selectRole');
+    for (let i=0; i<radio.length; i++) {
+      if(radio[0].checked) {
+        userRole = 'owner';
+      } else {
+        userRole = 'tenant';
+      }
+  	}
+  }
+  getRole();
+  if (userName && userEmail && userPassword && userRole) {
+    const user = {
+      username: userName,
+      email: userEmail,
+      password: userPassword,
+      phone: userPhone,
+      role: userRole,
+    };
+    const response = await fetch("/api/user/register", {
+      method: "POST",
+      body: JSON.stringify(user),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      document.location.replace("/");
+    } 
+    else {
+      alert("failed to register");
+    }
+  }
 };
 
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+document
+  .getElementById("login-button")
+  .addEventListener("click", loginFormHandler);
+document
+  .getElementById("signup-button")
+  .addEventListener("click", signupFormHandler);

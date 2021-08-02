@@ -1,19 +1,48 @@
 const router = require('express').Router();
-const{Users,Property,Contract} = require('../../models');
+const session = require('express-session');
+const{User, Property} = require('../../models');
+const withAuth = require('../../utils/auth');
+
+router.get('/',async(req,res)=>{
+  try {
+    const userData = await User.findOne({where:{email:req.session.email},raw:true});
+    const PropertyData = await Property.findAll({where:{owner_id:userData.id},raw:true});
+    if (userData.role =="owner") {
+      isOwner = true;
+    }else{
+      isOwner = false;
+    }
+    console.log(userData);
+    res.render('profile',{
+      username:userData.username,
+      email:userData.email,
+      phone:userData.phone,
+      isOwner:isOwner,
+      listings:PropertyData,
+      loggedIn:req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 // CREATE new user
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
-      const UserData = await User.create({
+      const userData = await User.create({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
+        phone:req.body.phone,
+        role: req.body.role
       });
-  
+
+      //initialize user_id in session
       req.session.save(() => {
         req.session.loggedIn = true;
-  
-        res.status(200).json(UserData);
+        req.session.email = req.body.email;
+        res.redirect('/');
       });
     } catch (err) {
       console.log(err);
@@ -46,10 +75,10 @@ router.post('/login', async (req, res) => {
       // Create session variables based on the logged in user
       req.session.save(() => {
         req.session.loggedIn = true;
-  
+        req.session.email = req.body.email;
         res
           .status(200)
-          .json({ user: UserData, message: 'You are now logged in!' });
+          .json({ user: userData, message: 'You are now logged in!' });
       });
     } catch (err) {
         console.log(err);
@@ -67,7 +96,5 @@ router.post('/logout', (req, res) => {
       res.status(404).end();
     }
   });
-
-
 
   module.exports = router;

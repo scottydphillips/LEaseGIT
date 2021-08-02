@@ -1,29 +1,39 @@
-const Users = require("./Users");
+const User = require("./User");
 const Property = require("./Property");
-const Contract = require("./Contract");
+const Furniture = require("./Furniture");
+const Room = require("./Room");
 
-//User has many properties
-Users.hasMany(Property, {
-    foreignKey: 'users_id',
-     onDelete: 'CASCADE'
+//Property can have multiple rooms
+Property.hasMany(Room, {
+    foreignKey: "property_id",
+    onDelete: "CASCADE",
 });
 
-//Property belongs to one user
-Property.belongsTo(Users, {
-    foreignKey:'users_id', 
-    onDelete: 'CASCADE'
+//Room belongs to a property
+Room.belongsTo(Property, {
+    foreignKey: 'property_id',
+    onDelete: "CASCADE",
 });
   
 
-
-//Property has one contract 
-Property.hasOne(Contract, {
-  foreignKey: "property_id",
-   onDelete: "CASCADE",
+//Room can have multiple furniture
+Room.hasMany(Furniture, {
+  foreignKey: "furniture_id",
+  onDelete: "CASCADE",
 });
 
+//Furniture belongs to a room
+Furniture.belongsTo(Room, {
+    foreignKey: 'property_id',
+    onDelete: "CASCADE",
+  });
 
+Property.belongsTo(User,{
+    foreignKey: 'owner_id',
+})
 
+User.hasMany(Property,{
+    foreignKey: 'owner_id',
+})
 
-
-module.exports = { Users, Property, Contract };
+module.exports = { User, Property,Furniture,Room};

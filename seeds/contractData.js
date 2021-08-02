@@ -1,7 +1,12 @@
-[
-  {
-    id: "2",
-    term: "Contract stating number of days renting",
-    
-  }
-]  
+const {Contract} = require('../models');
+
+const contractData = [  
+    {
+        id:'4',
+        term:5
+    }
+]
+
+const seedContract = () => Contract.bulkCreate(contractData);
+
+module.exports = seedContract;

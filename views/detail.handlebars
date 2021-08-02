@@ -1,0 +1,25 @@
+<div class='container'>
+    <div class='row gx-5 gy-3'>
+        <div class="col-md-9">
+            <h3>Property Details</h2>
+            <p>Property ID: {{id}}</p>
+            <p>Property Address: {{address}}</p>
+            {{#if availability}}
+                <p>Property Availability: available</p>
+                {{else}}
+                <p>Property Availability: unavailable</p>
+            {{/if}}
+        </div>
+<hr>
+        <div class='col-md-9'>
+            <h3>Owner's Informations:</h3>
+            <p>Name: {{name}}</p>
+            <p>Email: {{email}}</p>
+            <p>Phone#: {{phone}}</p>
+        </div>
+    </div>
+</div>
+
+<div class='container'>
+    <h3>Furniture Planner:</h3>
+</div>

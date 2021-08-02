@@ -12,7 +12,7 @@ Contract.init(
       primaryKey:true,
     },
     term: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER
     },
   },
   {
