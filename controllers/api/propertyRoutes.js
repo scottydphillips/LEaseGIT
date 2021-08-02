@@ -30,9 +30,11 @@ router.get('/:id',async (req,res)=>{
         res.json(err);
     }
     
-})
+});
 
-//static route to room planner
-router.get('/plan', (req, res) => res.sendFile(path.join(__dirname, 'plan.html')));
+
+router.get('/plan', async (req, res) => {
+    res.render('planner');
+});
 
 module.exports = router;
