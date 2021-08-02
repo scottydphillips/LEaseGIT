@@ -6,15 +6,16 @@ const propertyData = require("../seeds/propertyData");
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
-
-    await Property.bulkCreate(propertyData);
-    console.log("\n----- PROPERTY DATA -----\n");
     
     await User.bulkCreate(userData,{
         individualHooks: true,
         returning: true,
     });
     console.log("\n----- USER DATA -----\n");
+
+
+    await Property.bulkCreate(propertyData);
+    console.log("\n----- PROPERTY DATA -----\n");
 
     process.exit(0);
   };
