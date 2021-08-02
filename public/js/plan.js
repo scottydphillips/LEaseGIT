@@ -122,9 +122,9 @@ const render = Render.create({
 engine.gravity.y = 0;
 
 //floor path
-const placeholderFlooringUrl = "../../public/images/house/chevron-hardwood-floor.png"
+const placeholderFlooringUrl = "../../public/images/floors/chevron-hardwood-floor.png"
 //wall path
-const wallUrl = "../../public/images/house/wall.png"
+const wallUrl = "../../public/images/floors/wall.png"
 //furniture paths
 const sofaUrl = "../../public/images/furniture/sofa.png";
 const bed1Url = "../../public/images/furniture/bed1.png";
@@ -183,5 +183,5 @@ setTimeout(function(){
 
 function selectFloor() {
   let selectedFloor = document.getElementById("floor-picker").value;
-  floor.render.sprite.texture = `../../public/images/house/${selectedFloor}.png`
+  floor.render.sprite.texture = `../../public/images/floors/${selectedFloor}.png`
 }

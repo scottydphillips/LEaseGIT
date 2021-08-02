@@ -2,10 +2,11 @@
   <header><h1>{{id}}: {{address}}</h1></header>
   <div class="card-body">
     {{#if availability}}
-      <p>The property is available</p>
+      <p>The property is available!</p>
       {{else}}
-      <p>The property is under contract</p>
+      <p>The property is no longer available</p>
       {{/if}}
-      <a href="/api/property/{{id}}"><h2>details</h2></a>
+      <a href="/api/property/{{id}}"><h2>Details</h2></a>
+      <img class="house-icon" src="images/houses/{{address}}.png">
   </div>
 </section>
