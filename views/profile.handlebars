@@ -3,4 +3,10 @@
     <h3>Name: {{username}} </h3>
     <h3>email: {{email}}</h3>
     <h3>phone: {{phone}}</h3>
+    {{#if isOwner}}
+    <h1>Properties You Own: </h1>
+    {{>listings}}
+    {{else}}
+    <h1>Saved floor plans: </h1>
+    {{/if}}
 </div>
