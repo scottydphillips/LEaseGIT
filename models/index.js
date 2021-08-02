@@ -28,11 +28,11 @@ Furniture.belongsTo(Room, {
   });
 
 Property.belongsTo(User,{
-    foreignKey:'owner_id'
-});
+    foreignKey: 'owner_id',
+})
 
-User.hasOne(Property,{
-    foreignKey:'owner_id',
-});
+User.hasMany(Property,{
+    foreignKey: 'owner_id',
+})
 
-module.exports = { User, Property};
+module.exports = { User, Property,Furniture,Room};
