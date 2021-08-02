@@ -122,21 +122,21 @@ const render = Render.create({
 engine.gravity.y = 0;
 
 //floor path
-const placeholderFlooringUrl = "../../public/images/floors/chevron-hardwood-floor.png"
+const placeholderFlooringUrl = "/images/floors/chevron-hardwood-floor.png"
 //wall path
-const wallUrl = "../../public/images/floors/wall.png"
+const wallUrl = "/images/floors/wall.png"
 //furniture paths
-const sofaUrl = "../../public/images/furniture/sofa.png";
-const bed1Url = "../../public/images/furniture/bed1.png";
-const bed2Url = "../../public/images/furniture/bed2.png";
-const loveseatUrl = "../../public/images/furniture/loveseat.png";
-const plushChairUrl = "../../public/images/furniture/plush-chair.png";
-const tvStandUrl = "../../public/images/furniture/tv-stand.png";
-const nightstandUrl = "../../public/images/furniture/nightstand.png";
-const workspaceUrl = "../../public/images/furniture/workspace.png";
-const diningRoomTableUrl = "../../public/images/furniture/dining-room-table.png";
-const roundMarbleTableUrl = "../../public/images/furniture/round-marble-table.png";
-const roundWoodTableUrl = "../../public/images/furniture/round-wood-table.png";
+const sofaUrl = "/images/furniture/sofa.png";
+const bed1Url = "/images/furniture/bed1.png";
+const bed2Url = "/images/furniture/bed2.png";
+const loveseatUrl = "/images/furniture/loveseat.png";
+const plushChairUrl = "/images/furniture/plush-chair.png";
+const tvStandUrl = "/images/furniture/tv-stand.png";
+const nightstandUrl = "./images/furniture/nightstand.png";
+const workspaceUrl = "/images/furniture/workspace.png";
+const diningRoomTableUrl = "/images/furniture/dining-room-table.png";
+const roundMarbleTableUrl = "/images/furniture/round-marble-table.png";
+const roundWoodTableUrl = "/images/furniture/round-wood-table.png";
 
 //floor
 addFloor(placeholderFlooringUrl);
@@ -183,5 +183,5 @@ setTimeout(function(){
 
 function selectFloor() {
   let selectedFloor = document.getElementById("floor-picker").value;
-  floor.render.sprite.texture = `../../public/images/floors/${selectedFloor}.png`
+  floor.render.sprite.texture = `/images/floors/${selectedFloor}.png`
 }
