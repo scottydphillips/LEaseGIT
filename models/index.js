@@ -24,14 +24,14 @@ const Furniture = require("./Furniture");
 //   onDelete: "CASCADE",
 // });
 
-Room.belongsTo(Property, {
-    foreignKey: 'property_id',
-    onDelete: "CASCADE",
-  });
+// Room.belongsTo(Property, {
+//     foreignKey: 'property_id',
+//     onDelete: "CASCADE",
+//   });
 
-Furniture.belongsTo(Room, {
-    foreignKey: 'property_id',
-    onDelete: "CASCADE",
-  });
+// Furniture.belongsTo(Room, {
+//     foreignKey: 'property_id',
+//     onDelete: "CASCADE",
+//   });
 
 module.exports = { User, Property};
