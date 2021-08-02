@@ -2,25 +2,13 @@ const User = require("./User");
 const Property = require("./Property");
 // const Contract = require("./Contract");
 
-// //User has many properties
-// User.hasMany(Property, {
-//     foreignKey: 'userId',
-//     onDelete: 'CASCADE'
-// });
-  
-   
-
-// //Property belongs to one user
-// Property.belongsTo(User, {
-//   foreignKey: "userId",
-//   onDelete: "CASCADE",
+// Property.belongsTo(User,{
+//     foreignKey:'owner_id'
 // });
 
-
-// //Property has one contract
-// Property.hasOne(Contract, {
-//   foreignKey: "propertyId",
-//   onDelete: "CASCADE",
+// User.hasOne(Property,{
+//     foreignKey:'owner_id',
+//     onDelete:'CASCADE',
 // });
 
 module.exports = { User, Property};

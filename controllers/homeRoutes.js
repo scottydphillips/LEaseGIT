@@ -6,25 +6,31 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   //if logged in, show the listings of all properties
   try {
-    //get all properties from DB
-    const propertyData = await Property.findAll();
-    //send to handlebars for #each function to process all the cards
-    const listings = propertyData.map(property => {
-      property.get({plain:true});
-    });
+    //get all properties from DB as raw data objects
+    // const propertyData = await Property.findAll();
+    // console.log(propertyData);
+
+    // const listings = await propertyData.map((property)=>{
+    //   property.get({plain : true});
+    // });
+    // console.log(listings);
+
+    const listings = await Property.findAll({raw:true});
+    
     //render the page with all listings
     res.render('homepage',{
       listings,
-      logged_in:req.session.logged_in,
+      loggedIn:req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 //when /login is requested, render the login page
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
