@@ -5,6 +5,10 @@ router.get('/',async (req,res)=>{
     res.render('addForm',{loggedIn:req.session.loggedIn});
 });
 
+router.post('/add',async(req,res)=>{
+    console.log(req.body);
+});
+
 router.get('/:id',async (req,res)=>{
     console.log(req.params.id);
     try {
