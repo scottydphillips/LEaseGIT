@@ -10,28 +10,30 @@ const Furniture = require("./Furniture");
 // });
   
    
+  // (Matilda's additions)
+// //Property can have multiple rooms
+// Property.hasMany(Room, {
+//     foreignKey: "property_id",
+//     onDelete: "CASCADE",
+// });
 
-// //Property belongs to one user
-// Property.belongsTo(User, {
-//   foreignKey: "userId",
+// //Room belongs to a property
+// Room.belongsTo(Property, {
+//     foreignKey: 'property_id',
+//     onDelete: "CASCADE",
+// });
+
+// //Room can have multiple furniture
+// Room.hasMany(Furniture, {
+//   foreignKey: "furniture_id",
 //   onDelete: "CASCADE",
 // });
 
+// //Furniture belongs to a room
+// Furniture.belongsTo(Room, {
+//     foreignKey: 'property_id',
+//     onDelete: "CASCADE",
+//   });
 
-// //Property has one contract
-// Property.hasOne(Contract, {
-//   foreignKey: "propertyId",
-//   onDelete: "CASCADE",
-// });
-
-Room.belongsTo(Property, {
-    foreignKey: 'property_id',
-    onDelete: "CASCADE",
-  });
-
-Furniture.belongsTo(Room, {
-    foreignKey: 'property_id',
-    onDelete: "CASCADE",
-  });
 
 module.exports = { User, Property};
