@@ -1,11 +1,11 @@
 <section class="card">
-    <header></header>
-    <a href="/property/{{id}}">Address:{{address}}</a>
-    <div class="card-body">
-      {{#if availability}}
+  <header><h1>{{id}}: {{address}}</h1></header>
+  <div class="card-body">
+    {{#if availability}}
       <p>The property is available</p>
       {{else}}
       <p>The property is no longer available</p>
       {{/if}}
-    </div>
+      <a href="/api/property/{{id}}"><h2>details</h2></a>
+  </div>
 </section>
