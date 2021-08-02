@@ -15,6 +15,7 @@ router.get('/:id',async (req,res)=>{
                 name:propertyData.user.username,
                 email:propertyData.user.email,
                 phone:propertyData.user.phone,
+                loggedIn:req.session.loggedIn,
             }
         );
     } catch (err) {
