@@ -1,12 +1,26 @@
 const router = require('express').Router();
-const{User} = require('../../models');
+const session = require('express-session');
+const{User, Property} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/',async(req,res)=>{
   try {
-    const userData = await User.findOne({where:{email:req.session.email},raw:true})
-    userData.loggedIn = req.session.loggedIn;
-    res.render('profile',userData);
+    const userData = await User.findOne({where:{email:req.session.email},raw:true});
+    const PropertyData = await Property.findAll({where:{owner_id:userData.id},raw:true});
+    if (userData.role =="owner") {
+      isOwner = true;
+    }else{
+      isOwner = false;
+    }
+    // console.log(PropertyData,userData);
+    res.render('profile',{
+      username:userData.name,
+      email:userData.email,
+      phone:userData.phone,
+      isOwner:isOwner,
+      listings:PropertyData,
+      loggedIn:req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

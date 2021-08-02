@@ -5,6 +5,12 @@
           <h3>Name: {{user.username}} </h3>
           <h3>email: {{user.email}}</h3>
           <h3>phone: {{user.phone}}</h3>
+          {{#if isOwner}}
+            <h1>Properties You Own: </h1>
+            {{>listings}}
+          {{else}}
+            <h1>Saved floor plans: </h1>
+          {{/if}}
         </div>
     </div>
 </div>
