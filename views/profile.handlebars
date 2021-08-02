@@ -6,6 +6,7 @@
           <h3>email: {{email}}</h3>
           <h3>phone: {{phone}}</h3>
           {{#if isOwner}}
+            <a href="/api/property/"><h2>Add A New Property</h2></a>
             <h1>Properties You Own: </h1>
             {{>listings}}
           {{/if}}
