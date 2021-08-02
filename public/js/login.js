@@ -22,6 +22,7 @@ const signupFormHandler = async (event) => {
   const userName = document.getElementById("name-signup").value.trim();
   const userEmail = document.getElementById("email-signup").value.trim();
   const userPassword = document.getElementById("password-signup").value.trim();
+  const userPhone = document.getElementById("phone-signup").value.trim();
   let userRole;
   const getRole = () => {
     let radio = document.getElementsByName('selectRole');
@@ -39,6 +40,7 @@ const signupFormHandler = async (event) => {
       username: userName,
       email: userEmail,
       password: userPassword,
+      phone: userPhone,
       role: userRole,
     };
     const response = await fetch("/api/user/register", {
