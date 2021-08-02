@@ -5,6 +5,7 @@ const withAuth = require('../../utils/auth');
 router.get('/',async(req,res)=>{
   try {
     const userData = await User.findOne({where:{email:req.session.email},raw:true})
+    userData.loggedIn = req.session.loggedIn;
     res.render('profile',userData);
   } catch (err) {
     console.log(err);
