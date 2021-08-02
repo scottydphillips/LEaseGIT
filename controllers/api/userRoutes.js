@@ -12,9 +12,9 @@ router.get('/',async(req,res)=>{
     }else{
       isOwner = false;
     }
-    // console.log(PropertyData,userData);
+    console.log(userData);
     res.render('profile',{
-      username:userData.name,
+      username:userData.username,
       email:userData.email,
       phone:userData.phone,
       isOwner:isOwner,
