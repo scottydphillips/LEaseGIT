@@ -16,11 +16,11 @@
 <body>
 	<div class='flex-column justify-space-around'>
 		<header class='display-flex justify-space-between align-center p-2'>
-			<h1><a href="/">LEaseGIT</a></h1>
+			<h1 id="logo"><a href="/">LE<span id="ase">ase</span><span id="g">G</span>IT</a></h1>
 			<nav>
 			{{#if loggedIn}}
-				<button class='no-button' id='profile'>profile</button>
-				<button class='no-button' id='logout'>Logout</button>
+				<button class='btn btn-info' id='profile'>Profile</button>
+				<button class='btn btn-dark' id='logout'>Logout</button>
 			{{/if}}
 			</nav>
 		</header>

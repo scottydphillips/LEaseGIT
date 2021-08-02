@@ -24,4 +24,7 @@ router.get('/:id',async (req,res)=>{
     
 })
 
+//static route to room planner
+router.get('/plan', (req, res) => res.sendFile(path.join(__dirname, 'plan.html')));
+
 module.exports = router;
