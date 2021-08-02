@@ -35,6 +35,6 @@ router.get('/:id',async (req,res)=>{
 
 router.get('/plan', async (req, res) => {
     res.render('planner');
-};
+});
 
 module.exports = router;
