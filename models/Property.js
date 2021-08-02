@@ -20,6 +20,13 @@ Property.init({
     type:DataTypes.BOOLEAN,
     default:true,
   },
+  owner_id:{
+    type:DataTypes.INTEGER,
+    reference:{
+      model:'user',
+      key:'id',
+    }
+  }
 },
 {
     sequelize,
