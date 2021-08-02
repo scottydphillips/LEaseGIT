@@ -10,7 +10,6 @@ Property.init({
     allowNull: false,
     primaryKey: true,
     autoIncrement: true,
-    primaryKey:true,
   },
   address: {
     type: DataTypes.STRING,
