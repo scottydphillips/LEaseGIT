@@ -1,4 +1,10 @@
-<div>show listings</div>
-{{#each listings as |listing|}}
-{{> listing-card}}
-{{/each}}
+<div class='container'>
+	<div class='row gx-5 gy-3'>
+		<div class='col-md-9'>
+			<h3>Listings:</h3>
+			{{#each listings as |listing|}}
+				{{> listing-card}}
+			{{/each}}
+		</div>
+	</div>
+</div>

@@ -1,19 +1,25 @@
-<div>
-<h1>Property Details</h1>
-<p>property ID: {{id}}</p>
-<p>property Address: {{address}}</p>
-{{#if availability}}
-<p>Property Availability: available</p>
-{{else}}
-<p>Property Availability: unavailable</p>
-{{/if}}
-
-<h3>Owner's Informations:</h3>
-<p>Name: {{name}}</p>
-<p>Email: {{email}}</p>
-<p>Phone#: {{phone}}</p>
+<div class='container'>
+    <div class='row gx-5 gy-3'>
+        <div class="col-md-9">
+            <h3>Property Details</h2>
+            <p>Property ID: {{id}}</p>
+            <p>Property Address: {{address}}</p>
+            {{#if availability}}
+                <p>Property Availability: available</p>
+                {{else}}
+                <p>Property Availability: unavailable</p>
+            {{/if}}
+        </div>
+<hr>
+        <div class='col-md-9'>
+            <h3>Owner's Informations:</h3>
+            <p>Name: {{user.name}}</p>
+            <p>Email: {{user.email}}</p>
+            <p>Phone#: {{user.phone}}</p>
+        </div>
+    </div>
 </div>
 
-<div>
-    <h1>Furniture Planner:</h1>
+<div class='container'>
+    <h3>Furniture Planner:</h3>
 </div>
