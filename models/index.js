@@ -3,14 +3,10 @@ const Property = require("./Property");
 const Furniture = require("./Furniture");
 // const Contract = require("./Contract");
 
-// //User has many properties
-// User.hasMany(Property, {
-//     foreignKey: 'userId',
-//     onDelete: 'CASCADE'
+// Property.belongsTo(User,{
+//     foreignKey:'owner_id'
 // });
-  
-   
-  // (Matilda's additions)
+
 // //Property can have multiple rooms
 // Property.hasMany(Room, {
 //     foreignKey: "property_id",
@@ -27,6 +23,10 @@ const Furniture = require("./Furniture");
 // Room.hasMany(Furniture, {
 //   foreignKey: "furniture_id",
 //   onDelete: "CASCADE",
+
+// User.hasOne(Property,{
+//     foreignKey:'owner_id',
+//     onDelete:'CASCADE',
 // });
 
 // //Furniture belongs to a room
