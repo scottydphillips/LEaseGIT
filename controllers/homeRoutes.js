@@ -6,6 +6,15 @@ const withAuth = require('../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   //if logged in, show the listings of all properties
   try {
+    //get all properties from DB as raw data objects
+    // const propertyData = await Property.findAll();
+    // console.log(propertyData);
+
+    // const listings = await propertyData.map((property)=>{
+    //   property.get({plain : true});
+    // });
+    // console.log(listings);
+
     const listings = await Property.findAll({raw:true});
     
     //render the page with all listings

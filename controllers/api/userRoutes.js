@@ -12,7 +12,6 @@ router.get('/',async(req,res)=>{
     }else{
       isOwner = false;
     }
-    console.log(userData);
     res.render('profile',{
       username:userData.username,
       email:userData.email,
