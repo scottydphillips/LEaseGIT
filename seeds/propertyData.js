@@ -14,7 +14,6 @@ const propertyData = [
     availability: false,
     owner_id:4,
   },
-
 ];
 
 
