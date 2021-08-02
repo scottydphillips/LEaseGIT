@@ -3,7 +3,13 @@ const{User} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/',async(req,res)=>{
-  res.json({message: 'user profile page' });
+  try {
+    const userData = await User.findOne({where:{email:req.session.email},raw:true})
+    res.render('profile',userData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 })
 
 // CREATE new user
@@ -13,12 +19,14 @@ router.post('/register', async (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
+        phone:req.body.phone,
         role: req.body.role
       });
 
       //initialize user_id in session
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.email = req.body.email;
         res.redirect('/');
       });
     } catch (err) {
@@ -52,6 +60,7 @@ router.post('/login', async (req, res) => {
       // Create session variables based on the logged in user
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.email = req.body.email;
         res
           .status(200)
           .json({ user: userData, message: 'You are now logged in!' });

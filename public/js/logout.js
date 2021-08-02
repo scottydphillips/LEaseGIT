@@ -12,4 +12,8 @@ const logout = async () => {
 	}
 };
 
+const profile = async () =>{
+	document.location.replace("/api/user");
+}
 document.querySelector('#logout').addEventListener('click', logout);
+document.querySelector('#profile').addEventListener('click', profile);
