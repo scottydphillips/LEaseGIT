@@ -31,14 +31,6 @@ User.init(
       allowNull: false,
       validate: {
         len: [8],
-        isAlphanumeric: true,
-      },
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [8],
       },
     },
     phone: {
