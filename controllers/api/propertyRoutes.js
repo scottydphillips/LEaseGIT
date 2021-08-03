@@ -5,6 +5,7 @@ router.get('/',async (req,res)=>{
     res.render('addForm',{loggedIn:req.session.loggedIn});
 });
 
+//POST To create new Property
 router.post('/add',async(req,res)=>{
     console.log(req.body);
     try {
@@ -24,6 +25,7 @@ router.post('/add',async(req,res)=>{
     }
 });
 
+//GET a particular Property
 router.get('/:id',async (req,res)=>{
     console.log(req.params.id);
     try {
@@ -45,11 +47,6 @@ router.get('/:id',async (req,res)=>{
         res.json(err);
     }
     
-});
-
-
-router.get('/plan', async (req, res) => {
-    res.render('planner');
 });
 
 module.exports = router;
