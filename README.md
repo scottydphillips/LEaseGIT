@@ -52,4 +52,4 @@ Screenshot of Room Planer scroll options-
 -----
 [Link to GitHub Repository](https://github.com/scottydphillips/LEaseGIT)
 
-[link to Deployed Herokuh Site](Herokuhttps://still-tundra-21201.herokuapp.com/login)
+[Link to Deployed Heroku Site](https://still-tundra-21201.herokuapp.com/login)
