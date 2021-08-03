@@ -5,6 +5,7 @@ let roomHeight = window.innerHeight * 0.8;
 let targetFurniture;
 let copyReady = true;
 
+//An image preloader function
 const loadImage = (imageUrl, whenLoaded) => {
     const img = new Image();
     img.onload = () => {
@@ -101,7 +102,7 @@ const loadImage = (imageUrl, whenLoaded) => {
       });
   }
     
-    
+//Matter-js
 const Engine = Matter.Engine,
 Render = Matter.Render,
 World = Matter.World,
@@ -158,8 +159,10 @@ const bathData = {width: 80, height: 200, url: "/images/furniture/bath.png"};
 const pottedPlantData = {radius: 30, url: "/images/furniture/potted-plant.png"};
 const bigPottedPlantData = {radius: 60, url: "/images/furniture/potted-plant.png"};
 
-//floor
+//Add sample floor texture without collision
 addFloor(placeholderFlooringUrl);
+
+//Mouse object to move and target furniture
 var mouse = Mouse.create(render.canvas),
         mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
@@ -176,7 +179,7 @@ render.mouse = mouse;
 Runner.run(engine);
 Render.run(render);
 
-//Load sample wall and furniture textures and create their bodies
+//Load sample furniture textures and create their bodies
 //set brief delay to allow floor to load both its texture and body first
 setTimeout(function(){
   //walls
@@ -240,14 +243,17 @@ window.addEventListener('keydown', (e) => {
     Matter.Body.rotate(targetFurniture, 0.07);
   });
 
+//dropdown menu new floor
 function selectFloor() {
   let selectedFloor = document.getElementById("floor-picker").value;
   floor.render.sprite.texture = `/images/floors/${selectedFloor}.png`
 }
 
+//Create new furniture from dropdown menu
 function selectNewFurniture() {
   let selectedFurniture = document.getElementById("furniture-picker").value;
 
+  //retrieve the corresponding furniture data
   let furnitureData;
   switch (selectedFurniture) {
     case ("sofa"):
@@ -335,6 +341,7 @@ function selectNewFurniture() {
       furnitureData = loveseatData; 
   }
 
+  //Add furniture based on whether is has radius property
   if (furnitureData.radius)
     addRoundFurniture(roomWidth/2, roomHeight/2, furnitureData.radius, furnitureData.url)
   else
