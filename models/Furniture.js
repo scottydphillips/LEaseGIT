@@ -3,6 +3,7 @@ const { Model, DataTypes } = require("sequelize");
   
   class Furniture extends Model {}
   
+  //Model to store furniture data used in Room
   Furniture.init(
     {
       id: {
