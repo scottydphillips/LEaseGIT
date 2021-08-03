@@ -29,23 +29,23 @@ Property owners are always looking for an easy and fast way to list their proper
 
 Screenshot of login page-
 
-![screenshot](public\images\Leasegitlogin.png)
+![screenshot](public/images/Leasegitlogin.png)
 
 Screenshot of listing page-
 
-![screenshot](public\images\Listingscreenshot.png)
+![screenshot](public/images/Listingscreenshot.png)
 
 Screenshot of Add Property site-
 
-![screenshot](public\images\addpropertysite.png)
+![screenshot](public/images/addpropertysite.png)
 
 Screenshot of Room Planer scroll options-
 
-![screenshot](public\images\floorplan1.png)
+![screenshot](public/images/floorplan1.png)
 
-![Screenshot](public\images\floorplan3.png)
+![Screenshot](public/images/floorplan3.png)
 
-![Screenshot](public\images\floorplan5.png)
+![Screenshot](public/images/floorplan5.png)
 
 
 ## URLs:
