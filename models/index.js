@@ -14,6 +14,7 @@ Room.belongsTo(Property, {
     foreignKey: 'property_id',
     onDelete: "CASCADE",
 });
+  
 
 //Room can have multiple furniture
 Room.hasMany(Furniture, {
